@@ -8,8 +8,8 @@ function Book() {
   let book = books.find((book) => book.id === id);
   return (
     <div className="page-book-page">
-      <Card className="Card">
-        <Card.Img width="500" vraiant="top" src={book?.img} />
+      <Card >
+        <Card.Img className="book-img"  src={book?.img} />
         <Card.Body>
           <Card.Text> {book?.desc}</Card.Text>
         </Card.Body>

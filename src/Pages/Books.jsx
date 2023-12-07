@@ -9,7 +9,7 @@ function Books() {
     <div className="page">
       {books.map((book) => (
         <Card style={{ width: "18rem", height: "500px" }}>
-          <Card.Img width="500" variant="top" src={book.img} />
+          <Card.Img className="book-img" width="700" variant="top" src={book.img} />
           <Card.Body>
             <Card.Title>{book.title}</Card.Title>
             <Card.Link>
