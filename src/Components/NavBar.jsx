@@ -14,7 +14,7 @@ function NavBar() {
   };
   let inactiveStyle = {
     color :"white",
-    backgroundColor: "white"
+    backgroundColor: ""
   }
   return (
     <div>

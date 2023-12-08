@@ -6,13 +6,13 @@ import { NavLink } from "react-router-dom";
 
 function ConnexionNavBar() {
   let activeStyle = {
-    color: "red",
-    backgroundColor: "white",
+    color :"red",
+    backgroundColor: "white"
   };
   let inactiveStyle = {
-    color: "white",
-    backgroundColor: "white",
-  };
+    color :"white",
+    backgroundColor: ""
+  }
   return (
     <div>
       <Navbar bg="dark" data-bs-theme="dark">
@@ -22,7 +22,9 @@ function ConnexionNavBar() {
             <Nav.Link>
               <NavLink
                 style={({ isActive }) =>
-                  isActive ? activeStyle : inactiveStyle
+                  isActive
+                    ? activeStyle
+                    : inactiveStyle
                 }
                 to="/"
               >
@@ -32,7 +34,9 @@ function ConnexionNavBar() {
             <Nav.Link>
               <NavLink
                 style={({ isActive }) =>
-                  isActive ? activeStyle : inactiveStyle
+                  isActive
+                    ? activeStyle
+                    : inactiveStyle
                 }
                 to="/login"
               >
@@ -40,7 +44,9 @@ function ConnexionNavBar() {
               </NavLink>
               <NavLink
                 style={({ isActive }) =>
-                  isActive ? activeStyle : inactiveStyle
+                  isActive
+                    ? activeStyle
+                    : inactiveStyle
                 }
                 to="/register"
               >
