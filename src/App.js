@@ -11,6 +11,7 @@ import { useState } from "react";
 import books from "./Data";
 import PrivateRoutes from "./Routes/PrivateRoutes";
 import ConnexionRoutes from "./Routes/ConnextionRoutes";
+import PageNotFound from "./Pages/PageNotFound";
 
 function App() {
   const [booksData, setBooksData] = useState(books);
@@ -27,7 +28,7 @@ function App() {
           }
         />
         <Route path="book/:id" element={<Book booksData={booksData} />} />
-        <Route path="not-found" />
+        <Route path="not-found" element={<PageNotFound/>} />
       </Route>
       <Route path="/" element={<ConnexionLayout />}>
         <Route

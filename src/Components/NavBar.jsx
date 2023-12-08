@@ -3,9 +3,19 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink,  useNavigate } from "react-router-dom";
 
 function NavBar() {
+  const navigate = useNavigate();
+  let session = localStorage.getItem("isLoggedIn");
+  let activeStyle = {
+    color :"red",
+    backgroundColor: "white"
+  };
+  let inactiveStyle = {
+    color :"white",
+    backgroundColor: "white"
+  }
   return (
     <div>
       <Navbar bg="primary" data-bs-theme="dark">
@@ -13,17 +23,53 @@ function NavBar() {
           <Navbar.Brand>MY BOOK</Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link>
-              <Link to="/">Home</Link>
+              <NavLink
+                style={({ isActive }) =>
+                  isActive
+                    ? activeStyle
+                    : inactiveStyle
+                }
+                to="/"
+              >
+                Home
+              </NavLink>
             </Nav.Link>
             <Nav.Link>
-              <Link to="/books">Books</Link>
+              <NavLink style={({ isActive }) =>
+                  isActive
+                    ? activeStyle
+                    : inactiveStyle
+                }  to="/books">Books</NavLink>
             </Nav.Link>
-            <Nav.Link>
-              <Link to="/login">Login</Link>
-            </Nav.Link>
-            <Nav.Link>
-              <Link to="/register">Register</Link>
-            </Nav.Link>
+            {session === "true" ? (
+              <Nav.Link>
+                <Nav.Link
+                  onClick={() => {
+                    localStorage.clear();
+                    navigate("/");
+                  }}
+                >
+                  Logout
+                </Nav.Link>
+              </Nav.Link>
+            ) : (
+              <>
+                <Nav.Link>
+                  <NavLink style={({ isActive }) =>
+                  isActive
+                    ?  activeStyle
+                    : inactiveStyle
+                } to="/login">Login</NavLink>
+                </Nav.Link>
+                <Nav.Link>
+                  <NavLink style={({ isActive }) =>
+                  isActive
+                  ? activeStyle
+                  : inactiveStyle
+                } to="/register">Register</NavLink>
+                </Nav.Link>
+              </>
+            )}
           </Nav>
         </Container>
       </Navbar>

@@ -10,7 +10,7 @@ function Login() {
     localStorage.setItem("isLoggedIn", true);
     setTimeout(() => {
       setSession(true);
-    }, 5000);
+    }, 2000);
   };
   if (session) {
     navigate("/books");
