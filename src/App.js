@@ -9,6 +9,8 @@ import Register from "./Pages/Register";
 import Book from "./Pages/Book";
 import { useState } from "react";
 import books from "./Data";
+import PrivateRoutes from "./Routes/PrivateRoutes";
+import ConnexionRoutes from "./Routes/ConnextionRoutes";
 
 function App() {
   const [booksData, setBooksData] = useState(books);
@@ -18,13 +20,32 @@ function App() {
         <Route index element={<Home />} />
         <Route
           path="/books"
-          element={<Books booksData={booksData} setBooksData={setBooksData} />}
+          element={
+            <PrivateRoutes>
+              <Books booksData={booksData} setBooksData={setBooksData} />
+            </PrivateRoutes>
+          }
         />
-        <Route path="/book/:id" element={<Book booksData={booksData} />} />
+        <Route path="book/:id" element={<Book booksData={booksData} />} />
+        <Route path="not-found" />
       </Route>
       <Route path="/" element={<ConnexionLayout />}>
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Register />} />
+        <Route
+          path="login"
+          element={
+            <ConnexionRoutes>
+              <Login />
+            </ConnexionRoutes>
+          }
+        />
+        <Route
+          path="register"
+          element={
+            <ConnexionRoutes>
+              <Register />
+            </ConnexionRoutes>
+          }
+        />
       </Route>
     </Routes>
   );

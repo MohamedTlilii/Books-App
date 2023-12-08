@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
+  const navigate = useNavigate();
+  const [session, setSession] = useState(false);
+  const handleLogin = () => {
+    localStorage.setItem("isLoggedIn", true);
+    setTimeout(() => {
+      setSession(true);
+    }, 5000);
+  };
+  if (session) {
+    navigate("/books");
+  }
   return (
     <div className="page">
       <Form className="login-form">
@@ -22,7 +33,13 @@ function Login() {
             You dont have an account yet? Register now.
           </Link>
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button
+          onClick={() => {
+            handleLogin();
+          }}
+          variant="primary"
+          type="button"
+        >
           Login
         </Button>
       </Form>
